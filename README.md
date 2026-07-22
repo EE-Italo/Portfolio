@@ -1,4 +1,4 @@
-#Portfólio — Ítalo Mendonça de Souza
+#Portfólio — Ítalo Mendonça de Souza#
 
 Estudante de Bacharelado em Ciência de Dados e Inteligência Artificial na UFPB. Este repositório reúne meus projetos práticos de análise de dados, algoritmos e desenvolvimento.
 
