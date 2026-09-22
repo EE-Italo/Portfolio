@@ -1,0 +1,41 @@
+name: Atualizar IPCA
+
+on:
+  schedule:
+    # todo dia entre o 8º e o 12º dia do mês, 12:00 UTC
+    # (o IBGE costuma divulgar o IPCA por volta do dia 10)
+    - cron: "0 12 8-12 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ipca-ibge
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Extrair dados do IPCA
+        run: python extrair_ipca.py
+
+      - name: Gerar gráfico
+        run: python grafico_ipca.py
+
+      - name: Commitar alterações
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add ipca.csv ipca_variacao_mensal.png
+          git diff --cached --quiet || git commit -m "Atualiza dados do IPCA"
+          git push

@@ -15,6 +15,12 @@ Análise da taxa de aprovação de estudantes do Centro de Informática da UFPB 
 
 Tecnologias: Python, pandas, numpy, matplotlib, scikit-learn
 
+IPCA — Extração e Visualização
+
+Pipeline que extrai a série histórica completa do IPCA da API de Agregados do IBGE, limpa os dados e gera um gráfico da variação mensal desde 1979. Atualizado automaticamente todo mês via GitHub Actions.
+
+Tecnologias: Python, requests, pandas, matplotlib, GitHub Actions
+
 <!-- Novos projetos serão adicionados aqui -->
 Contato
 GitHub: github.com/EE-Italo
